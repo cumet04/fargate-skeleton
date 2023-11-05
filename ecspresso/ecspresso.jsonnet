@@ -9,7 +9,7 @@
     {
       name: 'tfstate',
       config: {
-        url: '../.terraform.tfstate',
+        url: '../infra/.terraform.tfstate',
       },
     },
   ],
