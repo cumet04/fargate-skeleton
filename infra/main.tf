@@ -43,3 +43,7 @@ output "task_execution_role_arn" {
 output "security_group_id" {
   value = aws_security_group.ecs_task_sg.id
 }
+
+output "repository_url" {
+  value = aws_ecr_repository.main.repository_url
+}

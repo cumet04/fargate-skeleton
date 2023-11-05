@@ -8,12 +8,20 @@
 
   containerDefinitions: [{
     essential: true,
-    image: 'nginx:latest',
-    name: 'nginx',
+    image: '{{ tfstate `output.repository_url` }}:latest',
+    name: 'app',
     environment: [
       {
-        name: 'hoge',
-        value: 'fuga',
+        name: 'USERNAME',
+        value: 'hoge',
+      },
+      {
+        name: 'APP_ENV',
+        value: 'production',
+      },
+      {
+        name: 'PORT',
+        value: '3000',
       },
     ],
     logConfiguration: {

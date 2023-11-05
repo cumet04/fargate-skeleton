@@ -2,6 +2,10 @@ resource "aws_ecs_cluster" "main" {
   name = "fargate-skeleton_${var.name}"
 }
 
+resource "aws_ecr_repository" "main" {
+  name = "fargate-skeleton_${var.name}"
+}
+
 resource "aws_iam_role" "ecs_task_execution_role" {
   name = "fargate-skeleton_${var.name}_task_execution_role"
 
@@ -26,8 +30,8 @@ resource "aws_security_group" "ecs_task_sg" {
   vpc_id = aws_vpc.main.id
 
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 3000
+    to_port     = 3000
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
