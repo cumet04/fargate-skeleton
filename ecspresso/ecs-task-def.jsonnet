@@ -24,6 +24,7 @@
         value: '3000',
       },
     ],
+    portMappings: [{ containerPort: 3000 }],
     logConfiguration: {
       logDriver: 'awslogs',
       options: {

@@ -28,8 +28,18 @@ variable "name" {
   description = "group name of resources"
 }
 
-output "subnet_id" {
-  value = aws_subnet.public.id
+variable "use_alb" {
+  type        = bool
+  description = "use alb or not"
+  default     = false
+}
+
+output "subnet1_id" {
+  value = aws_subnet.public1.id
+}
+
+output "subnet2_id" {
+  value = aws_subnet.public2.id
 }
 
 output "log_group_name" {
@@ -46,4 +56,8 @@ output "security_group_id" {
 
 output "repository_url" {
   value = aws_ecr_repository.main.repository_url
+}
+
+output "target_group_arn" {
+  value = aws_lb_target_group.main.arn
 }

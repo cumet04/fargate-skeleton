@@ -5,6 +5,13 @@
   },
   desiredCount: 1,
   launchType: 'FARGATE',
+  loadBalancers: [
+    {
+      containerName: 'app',
+      containerPort: 3000,
+      targetGroupArn: '{{ tfstate `output.target_group_arn` }}',
+    },
+  ],
   networkConfiguration: {
     awsvpcConfiguration: {
       assignPublicIp: 'ENABLED',
@@ -12,7 +19,8 @@
         '{{ tfstate `output.security_group_id` }}',
       ],
       subnets: [
-        '{{ tfstate `output.subnet_id` }}',
+        '{{ tfstate `output.subnet1_id` }}',
+        '{{ tfstate `output.subnet2_id` }}',
       ],
     },
   },
